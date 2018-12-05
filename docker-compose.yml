@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  api1:
+    image: ${DOCKER_REGISTRY-}api1
+    build:
+      context: .
+      dockerfile: API1/Dockerfile
+
+
+  api2:
+    image: ${DOCKER_REGISTRY-}api2
+    build:
+      context: .
+      dockerfile: API2/Dockerfile
+
+
+  auth:
+    image: ${DOCKER_REGISTRY-}auth
+    build:
+      context: .
+      dockerfile: Auth/Dockerfile
+
+
+  mvcweb:
+    image: ${DOCKER_REGISTRY-}mvcweb
+    build:
+      context: .
+      dockerfile: MVCWeb/Dockerfile
+
+
+  razorweb:
+    image: ${DOCKER_REGISTRY-}razorweb
+    build:
+      context: .
+      dockerfile: RazorWeb/Dockerfile
+
