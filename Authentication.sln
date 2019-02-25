@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth", "Auth\Auth.csproj", "{CC2D284A-8380-4F23-8F3D-F6BEBF8DB3B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth", "Auth\Auth.csproj", "{CC2D284A-8380-4F23-8F3D-F6BEBF8DB3B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCWeb", "MVCWeb\MVCWeb.csproj", "{7978E46A-6F64-4939-9BE8-E631D43ABE6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCWeb", "MVCWeb\MVCWeb.csproj", "{7978E46A-6F64-4939-9BE8-E631D43ABE6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorWeb", "RazorWeb\RazorWeb.csproj", "{228F3B12-4B04-4FFC-9B48-4943B8D810E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorWeb", "RazorWeb\RazorWeb.csproj", "{228F3B12-4B04-4FFC-9B48-4943B8D810E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API1", "API1\API1.csproj", "{412FB814-FC7E-4150-B553-19A406780E2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API1", "API1\API1.csproj", "{412FB814-FC7E-4150-B553-19A406780E2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API2", "API2\API2.csproj", "{75A84175-E235-465E-81DF-2CC6A6744109}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API2", "API2\API2.csproj", "{75A84175-E235-465E-81DF-2CC6A6744109}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularWeb", "AngularWeb\AngularWeb.csproj", "{573F49A8-A122-4368-A9E8-5E88F2E0CF28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularWeb", "AngularWeb\AngularWeb.csproj", "{573F49A8-A122-4368-A9E8-5E88F2E0CF28}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D5C5035E-366E-443E-9C59-F1A3FBA5445C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "..\ConsoleApp\ConsoleApp.csproj", "{545E02E5-FF26-41DE-96F4-F1A6262F17E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{D5C5035E-366E-443E-9C59-F1A3FBA5445C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5C5035E-366E-443E-9C59-F1A3FBA5445C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5C5035E-366E-443E-9C59-F1A3FBA5445C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{545E02E5-FF26-41DE-96F4-F1A6262F17E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{545E02E5-FF26-41DE-96F4-F1A6262F17E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{545E02E5-FF26-41DE-96F4-F1A6262F17E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{545E02E5-FF26-41DE-96F4-F1A6262F17E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

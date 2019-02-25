@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Auth.Data;
 using Auth.Model;
+using IdentityServer4.EntityFramework.DbContexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -27,8 +28,9 @@ namespace Auth
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration["ConnectionString"];
+            var connectionString = Configuration["ConnectionStrings:DefaultConnection"];
             var contextMigrations = typeof(AuthDbContext).Assembly.GetName().Name;
+
             services.AddDbContext<AuthDbContext>(o =>
                 o.UseSqlServer(connectionString,
                     optionsBuilder => optionsBuilder.MigrationsAssembly(contextMigrations)));
@@ -39,11 +41,17 @@ namespace Auth
                     options.Password.RequireLowercase = false;
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequiredLength = 6;
-
                 })
                 .AddEntityFrameworkStores<AuthDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddIdentityServer()
+            //    .AddInMemoryIdentityResources(Config.GetIdentityResources())
+                .AddInMemoryApiResources(Config.GetApis())
+                .AddInMemoryClients(Config.GetClients())
+                .AddDeveloperSigningCredential();
+
+            /*
             services.AddIdentityServer(options =>
                 {
                     options.UserInteraction.LoginUrl = "/login";
@@ -63,6 +71,7 @@ namespace Auth
                     options.EnableTokenCleanup = true;
                 })
                 .AddAspNetIdentity<User>();
+                */
 
             services.AddMvc();
         }
@@ -76,11 +85,51 @@ namespace Auth
             }
 
             // Migrate DB here?
+            //InitializeDatabase(app);
 
             app.UseIdentity();
             app.UseIdentityServer();
 
             app.UseMvc();
+        }
+
+        private void InitializeDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
+
+                var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
+                context.Database.Migrate();
+                /*
+                if (!context.Clients.Any())
+                {
+                    foreach (var client in Config.GetClients())
+                    {
+                        context.Clients.Add(client.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+
+                if (!context.IdentityResources.Any())
+                {
+                    foreach (var resource in Config.GetIdentityResources())
+                    {
+                        context.IdentityResources.Add(resource.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+
+                if (!context.ApiResources.Any())
+                {
+                    foreach (var resource in Config.GetApis())
+                    {
+                        context.ApiResources.Add(resource.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+                */
+            }
         }
     }
 }
