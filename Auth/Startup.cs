@@ -49,6 +49,7 @@ namespace Auth
             //    .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddInMemoryApiResources(Config.GetApis())
                 .AddInMemoryClients(Config.GetClients())
+                .AddTestUsers(Config.GetUsers())
                 .AddDeveloperSigningCredential();
 
             /*
@@ -90,7 +91,8 @@ namespace Auth
             app.UseIdentity();
             app.UseIdentityServer();
 
-            app.UseMvc();
+            app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
         }
 
         private void InitializeDatabase(IApplicationBuilder app)
