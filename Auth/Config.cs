@@ -61,10 +61,10 @@ namespace Auth
                     AllowedGrantTypes = GrantTypes.Implicit,
 
                     // where to redirect to after login
-                    RedirectUris = { "http://localhost:44370/signin-oidc" },
+                    RedirectUris = { "https://localhost:44370/signin-oidc" },
 
                     // where to redirect to after logout
-                    PostLogoutRedirectUris = { "http://localhost:44370/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:44370/signout-callback-oidc" },
 
                     AllowedScopes = new List<string>
                     {
