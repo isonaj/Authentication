@@ -11,7 +11,6 @@ namespace MVCWeb.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize]
         public IActionResult Index()
         {
             return View();
@@ -24,11 +23,23 @@ namespace MVCWeb.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        [Authorize]
+        public IActionResult Claims()
         {
-            ViewData["Message"] = "Your contact page.";
-
             return View();
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult Login()
+        {
+            return Redirect("/");
+        }
+
+        [HttpPost]
+        public IActionResult Logout()
+        {
+            return SignOut("Cookies", "oidc");
         }
 
         public IActionResult Privacy()

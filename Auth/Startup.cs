@@ -46,7 +46,6 @@ namespace Auth
                 .AddDefaultTokenProviders();
 
             services.AddIdentityServer()
-            //    .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddInMemoryApiResources(Config.GetApis())
                 .AddInMemoryClients(Config.GetClients())
                 .AddTestUsers(Config.GetUsers())
@@ -89,7 +88,8 @@ namespace Auth
             // Migrate DB here?
             //InitializeDatabase(app);
 
-            app.UseIdentity();
+            //app.UseIdentity();
+            app.UseAuthentication();
             app.UseIdentityServer();
 
             app.UseStaticFiles();
